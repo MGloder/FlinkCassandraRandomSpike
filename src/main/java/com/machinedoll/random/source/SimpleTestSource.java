@@ -1,9 +1,9 @@
 package com.machinedoll.random.source;
 
 import com.machinedoll.random.entity.TestData;
-import org.apache.flink.streaming.api.functions.source.RichSourceFunction;
+import org.apache.flink.streaming.api.functions.source.RichParallelSourceFunction;
 
-public class SimpleTestSource extends RichSourceFunction<TestData> {
+public class SimpleTestSource extends RichParallelSourceFunction<TestData> {
   private Boolean isRunning = true;
 
   @Override

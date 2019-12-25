@@ -1,8 +1,18 @@
 package com.machinedoll.random.entity;
 
+import com.datastax.driver.mapping.annotations.Column;
+import com.datastax.driver.mapping.annotations.Table;
+
+@Table(keyspace = "spike", name = "testdata")
 public class TestData {
+
+  @Column(name = "id")
   private Long id;
+
+  @Column(name = "sensor")
   private String sensor;
+
+  @Column(name = "timestamp")
   private Long timestamp;
 
   public TestData(Long id, String sensor, Long timestamp) {

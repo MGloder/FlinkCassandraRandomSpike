@@ -18,10 +18,12 @@
 
 package com.machinedoll.random;
 
+import com.datastax.driver.mapping.Mapper;
 import com.machinedoll.random.entity.TestData;
 import com.machinedoll.random.source.SimpleTestSource;
-import org.apache.flink.streaming.api.datastream.DataStreamSource;
+import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+import org.apache.flink.streaming.connectors.cassandra.CassandraSink;
 
 /**
  * Skeleton for a Flink Streaming Job.
@@ -42,9 +44,14 @@ public class StreamingJob {
     final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
 
-    DataStreamSource<TestData> simpleTestSource = env.addSource(new SimpleTestSource());
+    DataStream<TestData> simpleTestSource = env.addSource(new SimpleTestSource());
 
     simpleTestSource.print();
+
+//    CassandraSink.addSink(simpleTestSource)
+//        .setMapperOptions(() -> new Mapper.Option[]{Mapper.Option.saveNullFields(true)})
+//        .setHost("127.0.0.1")
+//        .build();
     /*
      * Here, you can start creating your execution plan for Flink.
      *
