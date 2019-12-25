@@ -18,7 +18,9 @@
 
 package com.machinedoll.random;
 
+import com.machinedoll.random.entity.TestData;
 import com.machinedoll.random.source.SimpleTestSource;
+import org.apache.flink.streaming.api.datastream.DataStreamSource;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 
 /**
@@ -40,7 +42,9 @@ public class StreamingJob {
     final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
 
-    env.addSource(new SimpleTestSource()).print();
+    DataStreamSource<TestData> simpleTestSource = env.addSource(new SimpleTestSource());
+
+    simpleTestSource.print();
     /*
      * Here, you can start creating your execution plan for Flink.
      *

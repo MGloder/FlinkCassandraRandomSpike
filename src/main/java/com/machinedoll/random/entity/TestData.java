@@ -34,4 +34,13 @@ public class TestData {
   public void setTimestamp(Long timestamp) {
     this.timestamp = timestamp;
   }
+
+  @Override
+  public String toString() {
+    return "TestData{" +
+        "id=" + id +
+        ", sensor='" + sensor + '\'' +
+        ", timestamp=" + timestamp +
+        '}';
+  }
 }
