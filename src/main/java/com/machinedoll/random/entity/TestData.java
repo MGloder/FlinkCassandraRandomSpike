@@ -3,7 +3,7 @@ package com.machinedoll.random.entity;
 import com.datastax.driver.mapping.annotations.Column;
 import com.datastax.driver.mapping.annotations.Table;
 
-@Table(keyspace = "spike", name = "testdata")
+@Table(keyspace = "sipke", name = "testdata")
 public class TestData {
 
   @Column(name = "id")
@@ -14,6 +14,9 @@ public class TestData {
 
   @Column(name = "timestamp")
   private Long timestamp;
+
+  public TestData() {
+  }
 
   public TestData(Long id, String sensor, Long timestamp) {
     this.id = id;

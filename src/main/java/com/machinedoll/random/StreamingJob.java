@@ -46,33 +46,11 @@ public class StreamingJob {
 
     DataStream<TestData> simpleTestSource = env.addSource(new SimpleTestSource());
 
-//    simpleTestSource.print();
-
     CassandraSink.addSink(simpleTestSource)
-        .setHost("127.0.0.1")
+        .setHost("localhost")
         .setMapperOptions(() -> new Mapper.Option[]{Mapper.Option.saveNullFields(true)})
         .build();
-    /*
-     * Here, you can start creating your execution plan for Flink.
-     *
-     * Start with getting some data from the environment, like
-     * 	env.readTextFile(textPath);
-     *
-     * then, transform the resulting DataStream<String> using operations
-     * like
-     * 	.filter()
-     * 	.flatMap()
-     * 	.join()
-     * 	.coGroup()
-     *
-     * and many more.
-     * Have a look at the programming guide for the Java API:
-     *
-     * http://flink.apache.org/docs/latest/apis/streaming/index.html
-     *
-     */
 
-    // execute program
     env.execute("Flink Streaming Java API Skeleton");
   }
 }

@@ -16,6 +16,7 @@ public class SimpleTestSource extends RichParallelSourceFunction<TestData> {
       for (int i = 0; i < size; i++) {
         ctx.collect(new TestData(startId, "sensor-" + startId.toString(), System.currentTimeMillis()));
         startId += 1;
+        Thread.sleep(1000);
       }
     }
   }
