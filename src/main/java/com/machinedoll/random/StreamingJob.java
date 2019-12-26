@@ -46,12 +46,12 @@ public class StreamingJob {
 
     DataStream<TestData> simpleTestSource = env.addSource(new SimpleTestSource());
 
-    simpleTestSource.print();
+//    simpleTestSource.print();
 
-//    CassandraSink.addSink(simpleTestSource)
-//        .setMapperOptions(() -> new Mapper.Option[]{Mapper.Option.saveNullFields(true)})
-//        .setHost("127.0.0.1")
-//        .build();
+    CassandraSink.addSink(simpleTestSource)
+        .setHost("127.0.0.1")
+        .setMapperOptions(() -> new Mapper.Option[]{Mapper.Option.saveNullFields(true)})
+        .build();
     /*
      * Here, you can start creating your execution plan for Flink.
      *
